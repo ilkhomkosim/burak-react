@@ -13,7 +13,8 @@ const newDishes = [
     {productName: "kebab", imagePath: "/img/kebab-fresh.webp"},
     {productName: "Kebab", imagePath: "/img/kebab.webp"},
     {productName: "Lavash", imagePath: "/img/lavash.webp"},
-]
+];
+
 export default function NewDishes () {
     return (
     <div className={"new-products-frame"}>
