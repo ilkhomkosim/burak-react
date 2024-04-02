@@ -11,9 +11,9 @@ import  DescriptionOutlinedIcon  from "@mui/icons-material/DescriptionOutlined";
 
 const list = [
     {productName: "Lavash", imagePath: "/img/lavash.webp"},
-    {productName: "Lavash", imagePath: "/img/cutlet.webp"},
-    {productName: "Lavash", imagePath: "/img/kebab.webp"},
-    {productName: "Lavash", imagePath: "/img/kebab-fresh.webp"},
+    {productName: "Cutlet", imagePath: "/img/cutlet.webp"},
+    {productName: "Kebab", imagePath: "/img/kebab.webp"},
+    {productName: "Kebab", imagePath: "/img/kebab-fresh.webp"},
 ]
 
 export default function PopularDishes () {

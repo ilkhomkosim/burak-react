@@ -9,22 +9,22 @@ export default function Statistics () {
             <Stack className="info">
                 <Stack className="static-box">
                     <Box className={"static-num"}>20</Box>
-                    <Box className={"static-txt"}>Restaurant</Box>
+                    <Box className={"static-text"}>Restaurant</Box>
                 </Stack>
                 <Divider height="64" width="2" bg="#E3C08D" />
                 <Stack className="static-box">
                     <Box className={"static-num"}>8</Box>
-                    <Box className={"static-txt"}>Experience</Box>
+                    <Box className={"static-text"}>Experience</Box>
                 </Stack>
                 <Divider height="64" width="2" bg="#E3C08D" />
                 <Stack className="static-box">
                     <Box className={"static-num"}>50+</Box>
-                    <Box className={"static-txt"}>Menu</Box>
+                    <Box className={"static-text"}>Menu</Box>
                 </Stack>
                 <Divider height="64" width="2" bg="#E3C08D" />
                 <Stack className="static-box">
                     <Box className={"static-num"}>200+</Box>
-                    <Box className={"static-txt"}>Clients</Box>
+                    <Box className={"static-text"}>Clients</Box>
                 </Stack>
             </Stack>
         </Container>

@@ -10,7 +10,7 @@ import Divider from "../../components/divider";
 
 const newDishes = [
     {productName: "Cutlet", imagePath: "/img/cutlet.webp"},
-    {productName: "kebab", imagePath: "/img/kebab-fresh.webp"},
+    {productName: "Kebab", imagePath: "/img/kebab-fresh.webp"},
     {productName: "Kebab", imagePath: "/img/kebab.webp"},
     {productName: "Lavash", imagePath: "/img/lavash.webp"},
 ];
@@ -46,7 +46,8 @@ export default function NewDishes () {
                                         <Typography className={"views"}>
                                             20
                                             <VisibilityIcon
-                                            sx={{ fontSize:20, marginLeft:"5px"}}/>
+                                            sx={{ fontSize:20, marginLeft:"5px"}}
+                                            />
                                         </Typography>
                                     </Stack>
                                 </Stack>
