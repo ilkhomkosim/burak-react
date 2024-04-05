@@ -50,6 +50,13 @@ export default function OrdersPage() {
                   className={"order-user-avatar"}
                   alt=""
                 />
+                  <div className={"order-user-icon-box"}>
+                  <img
+                    src={"/icons/user-badge.svg"}
+                    className={"order-user-prof-img"}
+                    alt=""
+                  />
+                </div>
                 </div>
               <span className={"order-user-name"}>Uilyam</span>
               <span className={"order-user-prof"}> User </span>
