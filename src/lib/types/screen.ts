@@ -12,7 +12,7 @@ export interface AppRootState {
 export interface HomePageState {
     popuparDishes: Product[];
     newDishes: Product[];
-    topusers: Member[];
+    topUsers: Member[];
 }
 
 
