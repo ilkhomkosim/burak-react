@@ -8,12 +8,14 @@ import Events from "./Events";
 import "../../../css/home.css"
 
 export  default function HomePage() {
-    return <div className={"homepage"}>
+    return (
+    <div className={"homepage"}>
         <Statistics/>
         <PopularDishes/>
         <NewDishes/>
         <Advertisement/>
         <ActiveUsers/>
         <Events/>
-    </div>;
+    </div>
+    )
 }
