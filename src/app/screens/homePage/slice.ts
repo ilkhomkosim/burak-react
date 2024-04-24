@@ -7,6 +7,7 @@ const initialState: HomePageState = {
     topUsers: [],
 };
 
+
 const homePageSlice = createSlice({
     name: "homePage",
     initialState,
