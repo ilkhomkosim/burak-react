@@ -2,7 +2,7 @@ export enum ProductSize{
     SMALL = "SMALL",
     NORMAL = "NORMAL",
     LARGE = "LARGE",
-    SET = "SET"
+    SET = "SET",
 }
 
 export enum ProductVolume{
@@ -22,7 +22,7 @@ export enum ProductStatus {
 export enum ProductCollection {
     DISH = "DISH",
     SALAD = "SALAD",
-    DESSERT = "DESERT",
+    DESERT = "DESERT",
     DRINK = "DRINK",
     OTHER = "OTHER"
 }

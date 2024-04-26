@@ -1,244 +1,230 @@
-import React from "react";
-import {Box, Button, Card, CardMedia, Container, Stack} from "@mui/material";
+import React, { useEffect } from "react";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { Box, Button, Container, Stack } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import  MonetizationOnIcon  from "@mui/icons-material/MonetizationOn";
-import  RemoveRedEyeIcon  from "@mui/icons-material/RemoveRedEye";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import ArrowbackIcon from "@mui/icons-material/ArrowBack";
-import  ArrowForwardIcon  from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+// import "../../../css/products.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setProducts } from "./slice";
-import {createSelector} from "reselect";
+import { createSelector } from "reselect";
 import { retrieveProducts } from "./selector";
 import { Product } from "../../../lib/types/product";
+import ProductService from "../../services/ProductService";
+import { ProductCollection } from "../../../lib/enums/product.enum";
+import { serverApi } from "../../../lib/config";
 
-
-// REDUX SLICE & SELECTOR
+/** REDUX SLICE & SELECTOR **/
 const actionDispatch = (dispatch: Dispatch) => ({
-    setProducts:(data: Product[]) => dispatch(setProducts(data)),
-});
-const productsRetriever = createSelector(
-    retrieveProducts,
-    (products) => ({products})
-);
+    setProducts: (data: Product[]) => dispatch(setProducts(data)),
+  });
+  
+  const productsRetriever = createSelector(retrieveProducts, (products) => ({
+    products,
+  }));
+  
+  export default function Products() {
+    const { setProducts } = actionDispatch(useDispatch());
+    const { products } = useSelector(productsRetriever);
+  
+    useEffect(() => {
+      const product = new ProductService();
+      product
+        .getProducts({
+          page: 1,
+          limit: 8,
+          order: "createdAt",
+          productCollection: ProductCollection.DISH,
+          search: "",
+        })
+        .then((data) => setProducts(data))
+        .catch((err) => console.log(err));
+    }, []);
 
-
-const products = [
-    {productName: "Kebab", imagePath:"/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath:"/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath:"/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath:"/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath:"/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath:"/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath:"/img/kebab-fresh.webp"},
-    {productName: "Kebab", imagePath:"/img/kebab-fresh.webp"},
-]
-
-export default function Products() {
     return (
         <div className={"products"}>
-            <Container>
-                <Stack flexDirection={"column"} alignItems={"center"}>
-                    <Stack className={"avatar-big-box"} flexDirection={"row"}>
-                        <Stack className="res-title"> Burak Restaurant</Stack>
-                        <Stack className="search-button">
-                            <Box className={"search-field"}> Type here....</Box>
-                            <Button className="btn">Search
-                            <img src="/img/vector.svg" alt="" />
-                            </Button>
-                        </Stack>
-                    </Stack>
-
-                    <Stack className={"dishes-filter-section"}>
-                        <Stack className="dishes-filter-box">
-                            <Button 
-                            variant={"contained"}
-                            color={"primary"}
-                            className={"order"}
-                            >
-                                New
-                            </Button>
-                            <Button 
-                            variant={"contained"}
-                            color={"secondary"}
-                            className={"order"}
-                            >
-                                Price
-                            </Button>
-                            <Button 
-                            variant={"contained"}
-                            color={"secondary"}
-                            className={"order"}
-                            >
-                                Views
-                            </Button>
-                        </Stack>
-                    </Stack>
-
-                    <Stack className={"list-category-section"}>
-                        <Stack className="menu-type">
-                        <Stack className="dishes-filter-box">
-                            <Button 
-                            variant={"contained"}
-                            color={"primary"}
-                            className={"order"}
-                            >
-                                <Box className={"btn-text"}>DISH</Box>
-                            </Button>
-                            <Button 
-                            variant={"contained"}
-                            color={"secondary"}
-                            className={"order"}
-                            >
-                                SALAD
-                            </Button>
-                            <Button 
-                            variant={"contained"}
-                            color={"secondary"}
-                            className={"order"}
-                            >
-                                DRINK
-                            </Button>
-                            <Button 
-                            variant={"contained"}
-                            color={"secondary"}
-                            className={"order"}
-                            >
-                                DESERT
-                            </Button>
-                            <Button 
-                            variant={"contained"}
-                            color={"secondary"}
-                            className={"order"}
-                            >
-                                OTHER
-                            </Button>
-                        </Stack>
-                        </Stack>
-                        <Stack className={"product-wrapper"}>
-                            {products.length !== 0 ? (
-                                products.map((product, index) => {
-                                    return (
-                                        <Stack key={index} className={"product-card"}>
-                                            <Stack
-                                                className={"product-img"}
-                                                sx={{backgroundImage:`url(${product.imagePath})`}}
-                                            >
-                                                <div className="product-sale">
-                                                    <Box className={"product-sale-text"}> NORMAL size</Box>
-                                                </div>
-                                                <Button className="shop-btn">
-                                                    <img 
-                                                    src={"/icons/shopping-cart.svg"} alt=""
-                                                    style={{display:"flex"}}
-                                                    />
-                                                </Button>
-                                                {/* <Button className="view-botton" sx={{right:"36px"}}>
-                                                    <Badge badgeContent={20} color="secondary">
-                                                        <RemoveRedEyeIcon 
-                                                        sx={{
-                                                            color:20 ? "gray" :"white",
-                                                        }}
-                                                        />
-                                                    </Badge>
-                                                </Button> */}
-                                            </Stack>
-                                            <Box className={"product-desc"}>
-                                                <span className={"product-title"}>
-                                                    {product.productName}
-                                                </span>
-                                                <div className="money">
-                                                    <MonetizationOnIcon/>
-                                                    {12}
-                                                </div>
-                                            </Box>
-                                        </Stack>
-                                    )
-                                })
-                            ):(
-                                <Box className="no-data">Products are not available</Box>
-                            )}
-                        </Stack>
-                    </Stack>
-
-                    <Stack className="pagination-section">
-                        <Pagination
-                            count={3}
-                            page={1}
-                            renderItem={(item) => (
-                                <PaginationItem 
-                                components={{
-                                    previous:ArrowbackIcon,
-                                    next: ArrowForwardIcon,
-                                }} 
-                                {...item}
-                                color={"secondary"}
-                                />
-                            )}
-                        />
-                    </Stack>
+          <Container>
+            <Stack flexDirection={"column"} alignItems={"center"}>
+              <Stack className={"avatar-big-box"}>
+                <Stack className={"top-text"}>
+                  <p>Burak Restaurant</p>
+                  <Stack className={"single-search-big-box"}>
+                    <input
+                      type={"search"}
+                      className={"single-search-input"}
+                      name={"singleResearch"}
+                      placeholder={"Type here"}
+                      value={""}
+                    />
+                    <Button
+                      className={"single-button-search"}
+                      variant="contained"
+                      endIcon={<SearchIcon />}
+                    >
+                      Search
+                    </Button>
+                  </Stack>
                 </Stack>
-            </Container>
+              </Stack>
+              <Stack className={"dishes-filter-section"}>
+            <Stack className={"dishes-filter-box"}>
+              <Button
+                variant={"contained"}
+                color={"primary"}
+                className={"order"}
+              >
+                New
+              </Button>
+              <Button
+                variant={"contained"}
+                color={"secondary"}
+                className={"order"}
+              >
+                Price
+              </Button>
+              <Button
+                variant={"contained"}
+                color={"secondary"}
+                className={"order"}
+              >
+                Views
+              </Button>
+            </Stack>
+          </Stack>
 
+          <Stack className={"list-category-section"}>
+            <Stack className={"product-category"}>
+              <div className={"category-main"}>
+                <Button variant={"contained"} color={"secondary"}>
+                  Other
+                </Button>
+                <Button variant={"contained"} color={"secondary"}>
+                  Dessert
+                </Button>
+                <Button variant={"contained"} color={"secondary"}>
+                  Drink
+                </Button>
+                <Button variant={"contained"} color={"secondary"}>
+                  Salad
+                </Button>
+                <Button variant={"contained"} color={"primary"}>
+                  Dish
+                </Button>
+              </div>
+            </Stack>
+            <Stack className={"product-wrapper"}>
+              {products.length !== 0 ? (
+                products.map((product: Product) => {
+                  const imagePath = `${serverApi}/${product.productImages[0]}`;
+                  const sizeVolume =
+                    product.productCollection === ProductCollection.DRINK
+                      ? product.productVolume + "liter"
+                      : product.productSize + "size";
+                  return (
+                    <Stack key={product._id} className={"product-card"}>
+                      <Stack
+                        className={"product-img"}
+                        sx={{ backgroundImage: `url(${imagePath})` }}
+                      >
+                        <div className={"product-sale"}>{sizeVolume}</div>
+                        <Button className={"shop-btn"}>
+                          <img
+                            src={"/icons/shopping-cart.svg"}
+                            style={{ display: "flex" }}
+                          />
+                        </Button>
+                        <Button className={"view-btn"} sx={{ right: "36px" }}>
+                          <Badge
+                            badgeContent={product.productViews}
+                            color="secondary"
+                          >
+                            <RemoveRedEyeIcon
+                              sx={{
+                                color:
+                                  product.productViews === 0 ? "gray" : "white",
+                              }}
+                            />
+                          </Badge>
+                        </Button>
+                      </Stack>
+                      <Box className={"product-desc"}>
+                        <span className={"product-title"}>
+                          {product.productName}
+                        </span>
+                        <div className={"product-desc"}>
+                          <MonetizationOnIcon />
+                          {product.productPrice}
+                        </div>
+                      </Box>
+                    </Stack>
+                  );
+                })
+              ) : (
+                <Box className="no-data">Products are not available!</Box>
+              )}
+            </Stack>
+          </Stack>
 
-<div className="family-brand">
-    <Container className="container">
-        <Stack className="family-brand-text">Our Family Brands</Stack>
-    </Container>
-    <div className="family-brand-img-container">
-        <Card className="family-brand-card">
-            <CardMedia
-                component="img"
-                image="/img/doner.webp"
-                alt="Doner"
-                className="family-brand-img"
+          <Stack className={"pagination-section"}>
+            <Pagination
+              count={3}
+              page={1}
+              renderItem={(item) => (
+                <PaginationItem
+                  components={{
+                    previous: ArrowBackIcon,
+                    next: ArrowForwardIcon,
+                  }}
+                  {...item}
+                  color={"secondary"}
+                />
+              )}
             />
-        </Card>
-        <Card className="family-brand-card">
-            <CardMedia
-                component="img"
-                image="/img/gurme.webp"
-                alt="Gurme"
-                className="family-brand-img"
-            />
-        </Card>
-        <Card className="family-brand-card">
-            <CardMedia
-                component="img"
-                image="/img/seafood.webp"
-                alt="Seafood"
-                className="family-brand-img"
-            />
-        </Card>
-        <Card className="family-brand-card">
-            <CardMedia
-                component="img"
-                image="/img/sweets.webp"
-                alt="Sweets"
-                className="family-brand-img"
-            />
-        </Card>
-    </div>
-</div>
-
-<div className="address">
-    <Container>
-        <Stack className="address-area">
-            <Box className="adress-title"> Our address</Box>
-            <iframe
-            style={{marginTop:"60px"}}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.0459184834926!2d69.23497807605557!3d41.30786467131008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8ba862628adf%3A0x35cbda4b6948a351!2sKamolonOsh%20Drujba!5e0!3m2!1sen!2skr!4v1712134702603!5m2!1sen!2skr"
-            width="1320" 
-            height="500" 
-            ></iframe>
+          </Stack>
         </Stack>
-    </Container>
-</div>
+      </Container>
 
-        </div>
-    )
-    }
+      <div className={"brands-logo"}>
+        <Container className={"family-brands"}>
+          <Box className={"category-title"}>Our Family Brands</Box>
+          <Stack className={"brand-list"}>
+            <Box className={"review-box"}>
+              <img src={"/img/gurme.webp"} />
+            </Box>
+            <Box className={"review-box"}>
+              <img src={"/img/sweets.webp"} />
+            </Box>
+            <Box className={"review-box"}>
+              <img src={"/img/seafood.webp"} />
+            </Box>
+            <Box className={"review-box"}>
+              <img src={"/img/doner.webp"} />
+            </Box>
+          </Stack>
+        </Container>
+      </div>
+
+      <div className={"address"}>
+        <Container>
+          <Stack className={"address-area"}>
+            <Box className={"title"}>Our address</Box>
+            <iframe
+              style={{ marginTop: "60px" }}
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.363734762081!2d69.2267250514616!3d41.322703307863044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b9a0a33281d%3A0x9c5015eab678e435!2z0KDQsNC50YXQvtC9!5e0!3m2!1sko!2skr!4v1655461169573!5m2!1sko!2skr"
+              width="1320"
+              height="500"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </Stack>
+        </Container>
+      </div>
+    </div>
+  );
+}
