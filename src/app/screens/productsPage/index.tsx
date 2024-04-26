@@ -1,9 +1,8 @@
 import React from 'react';
-import { Container } from "@mui/material";
 import {  Route, Switch, useRouteMatch } from 'react-router-dom';
 import ChosenProduct from './ChosenProduct';
 import Products from './Products';
-import "../../../css/product.css"
+import "../../../css/product.css";
 
 export default function ProductsPage() {
     const products = useRouteMatch();
@@ -19,5 +18,6 @@ export default function ProductsPage() {
                 <Products/>
             </Route>
         </Switch>
-    </div>);
+    </div>
+    );
 }
