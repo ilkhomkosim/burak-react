@@ -9,7 +9,6 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-// import "../../../css/products.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setProducts } from "./slice";
@@ -19,17 +18,21 @@ import { Product, ProductInquiry } from "../../../lib/types/product";
 import ProductService from "../../services/ProductService";
 import { ProductCollection } from "../../../lib/enums/product.enum";
 import { serverApi } from "../../../lib/config";
+import { CartItem } from "../../../lib/types/search";
 
 /** REDUX SLICE & SELECTOR **/
 const actionDispatch = (dispatch: Dispatch) => ({
     setProducts: (data: Product[]) => dispatch(setProducts(data)),
 });
-
 const productsRetriever = createSelector(retrieveProducts, (products) => ({
     products,
 }));
 
-    export default function Products() {
+interface ProductsProps {
+    onAdd: (item: CartItem) => void;
+}
+    export default function Products(props: ProductsProps) {
+    const {onAdd} = props;
     const { setProducts } = actionDispatch(useDispatch());
     const { products } = useSelector(productsRetriever);
     const [productSearch, setProductSearch] = useState<ProductInquiry> ({
@@ -191,7 +194,19 @@ const productsRetriever = createSelector(retrieveProducts, (products) => ({
                         sx={{ backgroundImage: `url(${imagePath})` }}
                         >
                         <div className={"product-sale"}>{sizeVolume}</div>
-                        <Button className={"shop-btn"}>
+                        <Button className={"shop-btn"}
+                        onClick={(e) => {
+                            console.log("Button pressed");
+                            onAdd({
+                                _id: product._id,
+                                quantity: 1,
+                                name:  product.productName,
+                                price: product.productPrice,
+                                image:  product.productImages[0],
+                            });
+                            e.stopPropagation();
+                        }}
+                        >
                             <img
                             src={"/icons/shopping-cart.svg"}
                             style={{ display: "flex" }}
@@ -248,7 +263,6 @@ const productsRetriever = createSelector(retrieveProducts, (products) => ({
             </Stack>
         </Stack>
         </Container>
-
         <div className={"brands-logo"}>
         <Container className={"family-brands"}>
             <Box className={"category-title"}>Our Family Brands</Box>
