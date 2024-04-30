@@ -1,42 +1,15 @@
-// import { Member } from "./member";
-// import { Product } from "./product";
-
-// // REACT APP STATE
-// export interface AppRootState {
-//     homePage: HomePageState;
-//     productsPage: ProductsPageState;
-// }
-
-// // HOME PAGE
-// export interface HomePageState {
-//     popularDishes:Product[];
-//     newDishes: Product[];
-//     topUsers: Member[];
-// }
-
-// // PRODUCTS PAGE
-// export interface ProductsPageState {
-//     restaurant: Member | null;
-//     chosenProduct: Product | null;
-//     products: Product[];
-// }
-
-
-
-
-// // ORDERS PAGE
-
 import { Member } from "./member";
+import { Order } from "./order";
 import { Product } from "./product";
 
 /** REACT APP STATE **/
 export interface AppRootState {
   homePage: HomePageState;
   productsPage: ProductsPageState;
+  ordersPage: OrdersPageState;
 }
 
 /** HOME PAGE **/
-
 export interface HomePageState {
   popularDishes: Product[];
   newDishes: Product[];
@@ -44,7 +17,6 @@ export interface HomePageState {
 }
 
 /** PRODUCTS PAGE **/
-
 export interface ProductsPageState {
   restaurant: Member | null;
   chosenProduct: Product | null;
@@ -52,3 +24,8 @@ export interface ProductsPageState {
 }
 
 // /** ORDERS PAGE **/
+export interface OrdersPageState {
+  pausedOrders: Order[];
+  processOrders: Order[];
+  finishedOrders: Order[];
+}
