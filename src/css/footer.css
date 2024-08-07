@@ -1,5 +1,8 @@
+.footer-logo{
+  margin-top: -40px;
+}
+
 .foot-desc-txt {
-  margin-top: 22px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -9,7 +12,7 @@
 }
 
 .sns-context {
-  margin-top: 17px;
+  margin-top: 50px;
   width: 137px;
   display: flex;
   flex-direction: row;

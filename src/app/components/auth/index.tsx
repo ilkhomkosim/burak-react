@@ -98,7 +98,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
   const handleLoginRequest = async () => {
     try {
-      const isFulFill = memberNick !== "" && memberPhone !== "" && memberPassword !== "";
+      const isFulFill = memberNick !== ""  && memberPassword !== "";
       if(!isFulFill) throw new Error(Messages.error3)
 
       const loginInput: LoginInput = {

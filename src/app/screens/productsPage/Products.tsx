@@ -39,7 +39,7 @@ interface ProductsProps {
         page: 1,
         limit: 8,
         order: "createdAt",
-        productCollection: ProductCollection.DISH,
+        productCollection: ProductCollection.BEDS,
         search: "",
     });
     const [searchText, setSearchText] = useState<string>("")
@@ -95,7 +95,7 @@ interface ProductsProps {
             <Stack flexDirection={"column"} alignItems={"center"}>
                 <Stack className={"avatar-big-box"}>
                 <Stack className={"top-text"}>
-                    <p>Burak Restaurant</p>
+                    <p>Ease Store</p>
                     <Stack className={"single-search-big-box"}>
                     <input
                         type={"search"}
@@ -157,25 +157,33 @@ interface ProductsProps {
             <Stack className={"list-category-section"}>
             <Stack className={"product-category"}>
                 <div className={"category-main"}>
-                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.OTHER ?  "primary" : "secondary"}
-                onClick={() => searchCollectionHandler(ProductCollection.OTHER)}>
+                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.OTHERS ?  "primary" : "secondary"}
+                onClick={() => searchCollectionHandler(ProductCollection.OTHERS)}>
                     Other
                 </Button>
-                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.DESSERT ?  "primary" : "secondary"}
-                onClick={() => searchCollectionHandler(ProductCollection.DESSERT)}>
-                    Dessert
+                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.COUCHES ?  "primary" : "secondary"}
+                onClick={() => searchCollectionHandler(ProductCollection.COUCHES)}>
+                    Couches
                 </Button>
-                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.DRINK ?  "primary" : "secondary"}
-                onClick={() => searchCollectionHandler(ProductCollection.DRINK)}>
-                    Drink
+                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.CHAIRS ?  "primary" : "secondary"}
+                onClick={() => searchCollectionHandler(ProductCollection.CHAIRS)}>
+                    Chairs
                 </Button>
-                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.SALAD ?  "primary" : "secondary"}
-                onClick={() => searchCollectionHandler(ProductCollection.SALAD)}>
-                    Salad
+                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.CLOCKS ?  "primary" : "secondary"}
+                onClick={() => searchCollectionHandler(ProductCollection.CLOCKS)}>
+                    Clocks
                 </Button>
-                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.DISH ?  "primary" : "secondary"}
-                onClick={() => searchCollectionHandler(ProductCollection.DISH)}>
-                    Dish
+                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.BOOKCASES ?  "primary" : "secondary"}
+                onClick={() => searchCollectionHandler(ProductCollection.BOOKCASES)}>
+                    Bookcases
+                </Button>
+                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.TABLES ?  "primary" : "secondary"}
+                onClick={() => searchCollectionHandler(ProductCollection.TABLES)}>
+                    Tables
+                </Button>
+                <Button variant={"contained"} color={productSearch.productCollection === ProductCollection.BEDS ?  "primary" : "secondary"}
+                onClick={() => searchCollectionHandler(ProductCollection.BEDS)}>
+                    Beds
                 </Button>
                 </div>
             </Stack>
@@ -184,7 +192,7 @@ interface ProductsProps {
                 products.map((product: Product) => {
                     const imagePath = `${serverApi}/${product.productImages[0]}`;
                     const sizeVolume =
-                    product.productCollection === ProductCollection.DRINK
+                    product.productCollection === ProductCollection.CHAIRS
                         ? product.productVolume + "liter"
                         : product.productSize + "size";
                     return (
@@ -264,12 +272,18 @@ interface ProductsProps {
         </Container>
         <div className={"brands-logo"}>
         <Container className={"family-brands"}>
-            <Box className={"category-title"}>Our Family Brands</Box>
+            <Box className={"category-title"}>We Love The Ease</Box>
             <Stack className={"brand-list"}>
             <Box className={"review-box"}>
-                <img src={"/img/gurme.webp"} />
+                <img src={"/img/welove.webp"} />
             </Box>
             <Box className={"review-box"}>
+                <img src={"/img/we.love.webp"} />
+            </Box>
+            <Box className={"review-box"}>
+                <img src={"/img/we,love.webp"} />
+            </Box>
+            {/* <Box className={"review-box"}>
                 <img src={"/img/sweets.webp"} />
             </Box>
             <Box className={"review-box"}>
@@ -277,7 +291,7 @@ interface ProductsProps {
             </Box>
             <Box className={"review-box"}>
                 <img src={"/img/doner.webp"} />
-            </Box>
+            </Box> */}
             </Stack>
         </Container>
         </div>

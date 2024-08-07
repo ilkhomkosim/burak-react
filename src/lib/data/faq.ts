@@ -21,6 +21,6 @@ export const faq = [
 	},
 	{
 		question: 'Who developed this platform?',
-		answer: 'ITC Global developers developed this platform!',
+		answer: 'Ilkhom Kosimov (Uilyam) developed this platform!',
 	},
 ];

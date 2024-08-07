@@ -46,7 +46,7 @@ export default function HomeNavbar (props: HomeNavbarProps) {
             <Stack className="menu">
                 <Box>
                     <NavLink to="/">
-                        <img className="brand-logo" src="/icons/burak.svg" alt="" />
+                        <img className="brand-logo" src="/icons/ease.svg" alt="" />
                     </NavLink>
                 </Box>
 
@@ -137,9 +137,8 @@ anchorEl={anchorEl}
             </Stack>
             <Stack className="header-frame">
                 <Stack className="detail">
-                    <Box className={"head-main-text"}>World's Most Delocious Cousine</Box>
-                    <Box className={"wel-txt"}>The Choice, not just a choice </Box>
-                    <Box className={"service-txt"}>24 hours service</Box>
+                    <Box className={"head-main-text"}>Design creates culture. Culture shapes values. Values determine future.</Box>
+                    <Box className={"wel-txt"}>  We do not carve wood .We make your future </Box>
                     <Box className={"signup"}>
                         {!authMember ? (<Button variant={"contained"} className={"signup-button"}
                         onClick={() => setSignupOpen(true)}
@@ -147,9 +146,6 @@ anchorEl={anchorEl}
                             Sign up
                         </Button>) : null}
                     </Box>
-                </Stack>
-                <Stack className="logo-frame">
-                    <div className="logo-img"></div>
                 </Stack>
             </Stack>
         </Container>

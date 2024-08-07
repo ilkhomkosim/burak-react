@@ -9,7 +9,7 @@ import  VisibilityIcon  from "@mui/icons-material/Visibility";
 import Divider from "../../components/divider";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrieveNewDishes, retrievePopularDishes } from "./selector";
+import { retrieveNewDishes, retrieveBestSellers } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
 import { ProductCollection, ProductVolume } from "../../../lib/enums/product.enum";
@@ -29,13 +29,13 @@ export default function NewDishes () {
     <div className={"new-products-frame"}>
         <Container>
             <Stack className={"main"}>
-                <Box className={"category-title"}> Fresh Menu</Box>
+                <Box className={"category-title"}> New Products</Box>
                 <Stack className={"cards-frame"}>
                 <CssVarsProvider>
                     {newDishes.map((product:Product) => {
                         const imagePath = `${serverApi}/${product.productImages[1]}`;
-                        const sizeVolume = product.productCollection === ProductCollection.DRINK 
-                        ? product.productVolume + "l"
+                        const sizeVolume = product.productCollection === ProductCollection.CHAIRS 
+                        ? product.productVolume + "seats"
                         : product.productSize + "size"
                         return (
                             <Card key={product._id} variant="outlined" className={"card"}>

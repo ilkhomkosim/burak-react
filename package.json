@@ -1,5 +1,5 @@
 {
-  "name": "burak-react",
+  "name": "ease-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -30,6 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@types/axios": "^0.14.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^17.0.45",

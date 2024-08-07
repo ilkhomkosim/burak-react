@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 1px;
 }
 
 .products-page .products .top-text {
@@ -35,18 +36,19 @@
     font-family: "Dancing Script";
     font-style: normal;
     font-weight: 700;
-    font-size: 36px;
+    font-size: 50px;
     line-height: 43px;
     color: #343434;
 }
 
 .products-page .products .single-search-big-box {
+    margin-left: -700px;
     position: relative;
     width: 337px;
     height: 33px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
     background: #fffcfc;
     border: 1px solid #f8f8ff;
     box-shadow: 0px 4px 4px rgba(213, 213, 213, 0.25);
@@ -266,7 +268,7 @@
     z-index: 3;
     opacity: 0;
     transition: opacity 0.5s ease;
-    background: rgb(198 0 255 / 66%);
+    background: #020f109b;
     border: 2px solid #d7b686;
     border-radius: 10px;
     font-family: "Poppins";
@@ -346,12 +348,18 @@
 .products-page .products .brands-logo .review-box {
     margin-top: 40px;
     padding: 20px;
-    width: 260px;
+    width: 360px;
     height: 350px;
     display: flex;
     object-fit: fill;
-    box-shadow: 0px -1px 13px 5px #c8b3b340;
+    /* box-shadow: 0px -1px 13px 5px #c8b3b340; */
     border-radius: 20px;
+}
+
+.products-page .products .brands-logo .review-box img{
+    width: 340px;
+    height: 322px;
+    border-radius: 12px;
 }
 
 .products-page .products .brands-logo .review-img {

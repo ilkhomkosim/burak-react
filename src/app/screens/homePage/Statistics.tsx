@@ -8,23 +8,16 @@ export default function Statistics () {
         <Container>
             <Stack className="info">
                 <Stack className="static-box">
-                    <Box className={"static-num"}>20</Box>
-                    <Box className={"static-text"}>Restaurant</Box>
+                    <Box className={"static-num"}>23+</Box>
+                    <Box className={"static-text"}>Years in Business</Box>
                 </Stack>
-                <Divider height="64" width="2" bg="#E3C08D" />
                 <Stack className="static-box">
-                    <Box className={"static-num"}>8</Box>
-                    <Box className={"static-text"}>Experience</Box>
+                    <Box className={"static-num"}>564,108+</Box>
+                    <Box className={"static-text"}>Products sold</Box>
                 </Stack>
-                <Divider height="64" width="2" bg="#E3C08D" />
                 <Stack className="static-box">
-                    <Box className={"static-num"}>50+</Box>
-                    <Box className={"static-text"}>Menu</Box>
-                </Stack>
-                <Divider height="64" width="2" bg="#E3C08D" />
-                <Stack className="static-box">
-                    <Box className={"static-num"}>200+</Box>
-                    <Box className={"static-text"}>Clients</Box>
+                    <Box className={"static-num"}>361,890+</Box>
+                    <Box className={"static-text"}>Happy customers</Box>
                 </Stack>
             </Stack>
         </Container>

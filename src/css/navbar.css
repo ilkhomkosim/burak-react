@@ -4,6 +4,7 @@
     display: flex;
     background: url('/public/img/banner.webp');
     background-size: cover;
+    background-position: 100%;
 }
 
 .home-navbar .navbar-container {
@@ -20,8 +21,8 @@
 }
 
 .home-navbar .navbar-container .menu .brand-logo {
-    width: 125px;
-    height: 30px; 
+    width: 300px;
+    height: 300px; 
 }
 
 .home-navbar .navbar-container .menu .links {
@@ -30,10 +31,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 23px;
 }
 
 .home-navbar .navbar-container .menu .links .login-button{
-    background-color: #3776cc;
+    background-color: #d7b686;
     color: #f8f8ff;
 }
 
@@ -41,6 +43,7 @@
     width: 50px;
     height: 50px;
     border-radius: 24px;
+    margin-top: 1px;
 }
 
 .home-navbar a{
@@ -89,8 +92,8 @@
 }
 
 .home-navbar .navbar-container .header-frame .detail .head-main-text{
-    width: 450px;
-    height: 150px;
+    width: 650px;
+    height: 200px;
     font-family: "Roboto serif";
     font-size: 50px;
     font-style: normal;
@@ -112,20 +115,6 @@
     color: #d7b686;
 }
 
-.home-navbar .navbar-container .header-frame .detail .service-txt{
-    margin-top: 23px;
-    width: 153px;
-    height: 23px;
-
-    font-family: "Roboto serif";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.3px;
-    color: #d5d5d5;
-}
-
 .home-navbar .navbar-container .detail .signup {
     margin-top: 73px;
 }
@@ -134,7 +123,7 @@
     width: 210px;
     height: 60px;
     border-radius: 4px;
-    background: #1976d2;
+    background: #d7b686;
     text-align: center;
     font-family: Poppins;
     font-size: 17px;
@@ -154,7 +143,6 @@
 .home-navbar .navbar-container .logo-img {
     width: 100%;
     height: 100%;
-    background: url("/public/img/logo.webp");
     background-size: contain;
     background-repeat: no-repeat;
     filter: blur(15%);
@@ -184,8 +172,8 @@
 }
 
 .other-navbar .navbar-container .menu .brand-logo {
-    width: 125px;
-    height: 30px; 
+    width: 300px;
+    height: 300px;
 }
 
 .other-navbar .navbar-container .menu .links {
@@ -194,10 +182,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 23px;
 }
 
 .other-navbar .navbar-container .menu .links .login-button{
-    background-color: #3776cc;
+    background-color: #d7b686;
     color: #f8f8ff;
 }
 
