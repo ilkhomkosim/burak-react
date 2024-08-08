@@ -283,15 +283,6 @@ interface ProductsProps {
             <Box className={"review-box"}>
                 <img src={"/img/we,love.webp"} />
             </Box>
-            {/* <Box className={"review-box"}>
-                <img src={"/img/sweets.webp"} />
-            </Box>
-            <Box className={"review-box"}>
-                <img src={"/img/seafood.webp"} />
-            </Box>
-            <Box className={"review-box"}>
-                <img src={"/img/doner.webp"} />
-            </Box> */}
             </Stack>
         </Container>
         </div>
